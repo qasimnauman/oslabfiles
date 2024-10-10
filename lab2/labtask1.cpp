@@ -1,21 +1,30 @@
 #include <iostream>
 #include <unistd.h>
-#include <sys/wait.h>
-#include <errno.h>
 
 using namespace std;
 
 int main(){
-    pid_t pid = fork();
+    int superparentprocessid = getpid();
 
-    cout << "PID" << pid;
-    if (pid==0)
-    {
-        cout << "Parent ID " << getppid() <<endl;
-        exit(0);
+    pid_t fork1 = fork();
+    if(fork1 > 0){
+        if( fork() == 0){
+            fork();
+        }
     }
-    else if (pid > 0){
-        wait(NULL);
-        cout << "Parent Process \n";
+    else if( fork1 == 0){
+        if ( fork() == 0){
+            if ( fork() ==0){
+                if( fork() ==0){
+                    if ( fork()==0){
+                        cout << "ID of Process 'P' is " << superparentprocessid << endl;
+                    }
+                }
+            }
+        }
     }
+    else{
+        cout << "fork failed\n";
+    }
+    return 0;
 }
