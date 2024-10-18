@@ -2,29 +2,23 @@
 .vscode/
 
 # C++ ignores
-# Prerequisites
-*.d
+# Object files
+*.o
+*.out
 
-# Compiled Object files
+# Compiled files
 *.slo
 *.lo
-*.o
 *.obj
-
-# Precompiled Headers
 *.gch
 *.pch
 
-# Compiled Dynamic libraries
+# Dynamic libraries
 *.so
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
+# Static libraries
 *.lai
 *.la
 *.a
@@ -32,10 +26,9 @@
 
 # Executables
 *.exe
-*.out
 *.app
 
-# C++ Build directories
+# Build directories
 build/
 Debug/
 Release/
@@ -46,102 +39,16 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 
-# Python ignores
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-myenv/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# IDE-specific files (in addition to .vscode)
-*.user
-*.suo
-*.sdf
-*.opensdf
-*.VC.db
-*.VC.VC.opendb
-
 # OS-specific files
 .DS_Store
 Thumbs.db
 
+# Python ignores
+__pycache__/
+*.py[cod]
+*.egg-info/
 
-# Ignore object files
-*.o
-*.out
-
-# Ignore VSCode folder
-.vscode/
+# Environment directories
+.env
+.venv/
+venv/
