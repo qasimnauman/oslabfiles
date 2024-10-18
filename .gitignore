@@ -137,3 +137,11 @@ dmypy.json
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+
+# Ignore object files
+*.o
+*.out
+
+# Ignore VSCode folder
+.vscode/
