@@ -9,35 +9,37 @@ int main()
     int fd[2];
     int fd1[2];
     char buf[1025];
-    char const *data = "Hello this is written to pipe";
-    int x = pipe(fd);
-    if (x == -1)
+    char data[1025] = "Hello this is written to pipe";
+
+    if (pipe(fd) == -1 || pipe(fd1) == -1)
     {
-        cout << "pipe failed " << endl;
+        cout << "Pipe creation failed" << endl;
         exit(1);
     }
-    else
+
+    pid_t pid = fork();
+    if (pid == 0) // Child process
     {
-        int y = pipe(fd1);
-        pid_t pid = fork();
-        if (pid == 0)
+        close(fd[0]);  // Close read end of fd
+        close(fd1[1]); // Close write end of fd1
+
+        read(fd1[0], buf, 1024); // Read data sent by
+        cout << "Enter data to be written back to parent : ";
+        cin.getline(data, 1024);
+        write(fd[1], data, strlen(data)); // Write data back to parent
+    }
+    else // Parent process
+    {
+        close(fd[1]);  // Close write end of fd
+        close(fd1[0]); // Close read end of fd1
+
+        write(fd1[1], data, strlen(data));     // Write data to child
+        if ((n = read(fd[0], buf, 1024)) >= 0) // Read data from child
         {
-            close(fd[0]);
-            close(fd1[1]);
-            read(fd1[0], buf, strlen(buf));
-            write(fd[1], data, strlen(data));
-        }
-        else
-        {
-            close(fd[1]);
-            close(fd1[0]);
-            write(fd1[1], data, strlen(data));
-            if ((n = read(fd[0], buf, 1024)) >= 0)
-            {
-                buf[n] = 0;
-                cout << "\nRead " << n << " bytes from pipe\n" << buf << endl;
-            }
-            return 0;
+            buf[n] = 0; // Null-terminate buffer
+            cout << "\nRead " << n << " bytes from pipe\n"
+                 << buf << endl;
         }
     }
+    return 0;
 }
