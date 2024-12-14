@@ -33,19 +33,6 @@ struct Block
  * checks if the block's mean is greater than the difference of the global mean,
  * updates the frequency of the block before and after modification, and modifies
  * the submatrix based on certain conditions.
- *
- * @param arg Pointer to a Block structure containing information about the submatrix block.
- * @return void* Always returns NULL.
- *
- * The function performs the following steps:
- * 1. Locks a mutex to ensure thread safety.
- * 2. Calculates the sum and average of elements in the submatrix before modification.
- * 3. Checks if the block's mean is greater than the difference of the global mean.
- * 4. Updates the frequency of the block before modification.
- * 5. Modifies the submatrix based on the block number.
- * 6. Calculates the sum and average of elements in the submatrix after modification.
- * 7. Updates the frequency of the block after modification.
- * 8. Unlocks the mutex to release the lock.
  */
 void *matrix_processing(void *arg)
 {

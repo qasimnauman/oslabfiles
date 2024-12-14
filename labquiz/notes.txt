@@ -1,0 +1,3 @@
+umane -r
+sudo apt update
+sudo apt upgrade
