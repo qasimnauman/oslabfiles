@@ -9,7 +9,7 @@ using namespace std;
 
 // Define matrices
 vector<vector<double>> W = {
-    {0.2, -0.5, 0.1, 2.0},
+    {0.2, -0.5, 10.0, 2.0},
     {1.5, 1.3, 2.1, 0.0},
     {0.0, 0.25, 0.2, -0.3}};
 
